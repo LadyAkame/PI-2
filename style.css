@@ -1,0 +1,36 @@
+.navpage {
+    display: flex;
+    flex-direction: row-reverse;
+    margin: 2rem;
+}
+.tabela {
+    margin: 40px
+}
+.tabtittle{
+    color: #DBB800;
+    font-size: 60px
+}
+.tabboxes{
+    display: flex;
+    justify-content: space-around
+
+
+}
+.tabox1 {
+    width: 238px;
+    height: 284px;
+    background-color: #F5F5F5;
+}
+.tabox3 {
+    width: 238px;
+    height: 284px;
+    background-color: #F5F5F5;
+}
+.tabox2 {
+    width: 238px;
+    height: 284px;
+    background-color: #F5F5F5;
+}
+.numerofodase {
+    font-size: 40px;
+}

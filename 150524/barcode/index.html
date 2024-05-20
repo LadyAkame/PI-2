@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jsbarcode/3.11.3/JsBarcode.all.min.js"></script>
+  <link rel="stylesheet" href="estilo.css">
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gûyrá</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="galery/logo-white.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+</head>
+
+<body><div class="col-lg-9">
+                      <button id="openModalBtn">Abrir Modal</button>
+                    </div>
+              </div>
+          </div>
+      </div>
+
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="fecharModal()">&times;</span>
+      <div class="content">   
+        <svg id="barcode"></svg>
+        <button id="btn" onclick="gerar()">Gerar</button><br />
+        Gerado: <span id="resp"></span>
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    // Função para abrir o modal
+    function abrirModal() {
+      document.getElementById("myModal").style.display = "block";
+    }
+
+    // Função para fechar o modal
+    function fecharModal() {
+      document.getElementById("myModal").style.display = "none";
+    }
+
+    // Função para gerar o código de barras
+    function gerar() {
+      var resp = document.getElementById('resp');
+      var randomNumber = Math.floor(Math.random() * 1000000); // Gera um número aleatório
+      resp.innerText = randomNumber;
+
+      // Gera o código de barras com base no número aleatório
+      JsBarcode("#barcode", randomNumber.toString(), {
+        format: "CODE128", // Formato do código de barras
+        displayValue: true, // Exibir o valor do código de barras abaixo dele
+        fontSize: 20 // Tamanho da fonte do valor do código de barras
+      });
+    }
+
+    // Quando o botão é clicado, abre o modal
+    document.getElementById("openModalBtn").addEventListener("click", abrirModal);
+  </script>
+
+</body>
+</html>

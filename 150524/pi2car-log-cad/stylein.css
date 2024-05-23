@@ -8,6 +8,7 @@ header {
 }
 .aba {
     display: flex;
+    gap: 26px;
 }
 .container {
     width: 90%;

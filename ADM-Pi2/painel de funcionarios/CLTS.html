@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLTS</title>
+    <link rel="stylesheet" type="text/css" href="CLTSTYLE.css">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard">
+        <header>
+            <h1>Painel Administrativo</h1>
+            <button id="logout-btn">Deslogar</button>
+        </header>
+
+        <h2>Funcionários Cadastrados</h2>
+        <table id="users-table">
+            <thead>
+                <tr>
+                    <th>Usuário</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Conteúdo gerado por JavaScript -->
+            </tbody>
+        </table>
+        
+        <button id="add-employee-btn">Adicionar Funcionário</button>
+    </div>
+
+    <!-- Modal -->
+    <div id="add-employee-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Adicionar Funcionário</h2>
+            <form id="add-employee-form">
+                <input type="text" id="new-username" placeholder="Usuário" required>
+                <input type="email" id="new-email" placeholder="Email" required>
+                <input type="password" id="new-password" placeholder="Senha" required>
+                <button type="submit">Adicionar</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="SCRIPT.js"></script>
+    
+</body>
+</html>

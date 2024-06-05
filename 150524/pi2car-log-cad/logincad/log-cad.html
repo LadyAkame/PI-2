@@ -1,33 +1,57 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-	<title>Slide Navbar</title>
-	<link rel="stylesheet" type="text/css" href="logsty
-	.css">
-<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="logsty.css">
 </head>
 <body>
-	<div class="main">  	
-		<input type="checkbox" id="chk" aria-hidden="true">
+    <div class="main">  	
+        <input type="checkbox" id="chk" aria-hidden="true">
 
-			<div class="signup">
-				<form>
-					<label for="chk" aria-hidden="true">Sign up</label>
-					<input type="text" name="txt" placeholder="User name" required="">
-					<input type="email" name="email" placeholder="Email" required="">
-					<input type="password" name="pswd" placeholder="Password" required="">
-					<button>Sign up</button>
-				</form>
-			</div>
+        <div class="signup">
+            <form>
+                <label for="chk" aria-hidden="true">Sign up</label>
+                <input type="text" name="txt" placeholder="User name" required="">
+                <input type="email" name="email" placeholder="Email" required="">
+                <input type="password" name="pswd" placeholder="Password" required="">
+                <button id="signup-btn">Sign up</button>
+            </form>
+        </div>
 
-			<div class="login">
-				<form>
-					<label for="chk" aria-hidden="true">Login</label>
-					<input type="email" name="email" placeholder="Email" required="">
-					<input type="password" name="pswd" placeholder="Password" required="">
-					<button>Login</button>
-				</form>
-			</div>
-	</div>
+        <div class="login">
+            <form id="login-form">
+                <label for="chk" aria-hidden="true">Login</label>
+                <input type="email" id="login-email" name="email" placeholder="Email" required="">
+                <input type="password" id="login-password" name="pswd" placeholder="Password" required="">
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+
+	<script>
+		document.getElementById('login-form').addEventListener('submit', function(event) {
+			event.preventDefault();
+	
+			console.log('Login form submitted'); // Verifica se o evento de envio do formulário está sendo capturado
+	
+			const email = document.getElementById('login-email').value;
+			const password = document.getElementById('login-password').value;
+	
+			// Verificar se o email e a senha correspondem a um cliente cadastrado
+			// Se corresponderem, armazenar os dados do cliente no localStorage
+			// Você pode substituir este exemplo com sua lógica de autenticação real
+			const client = {
+				name: "Nome do Cliente",
+				email: email,
+				password: password
+			};
+	
+			localStorage.setItem('currentClient', JSON.stringify(client));
+	
+			window.location.href = 'file:///c%3A/Users/cg3031021/Desktop/ti-mod-2/pi/PI-2-11/150524/pi2car-log-cad/index.html'; // Redireciona para a página index.html após o login
+		});
+	</script>
 </body>
 </html>

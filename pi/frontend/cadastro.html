@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Usuário</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Cadastro de Usuário</h1>
+
+    <form id="cadastro">
+        Nome: <input type="text" name="nome" id="nome" placeholder="digite seu nome" required><br>
+        Email: <input type="email" name="email" id="email" placeholder="digite seu e-mail" required><br>
+        CPF: <input type="text" name="cpf" id="cpf" placeholder="digite seu CPF" required><br>
+        Telefone: <input type="text" name="telefone" id="telefone" placeholder="digite seu telefone" required><br>
+        Data de Nascimento: <input type="date" name="nascimento" id="nascimento"><br>
+        Senha: <input type="password" name="senha" id="senha" required><br>
+        Confirma Senha: <input type="password" name="senha2" id="senha2" required><br>
+
+        <button type="submit">Salvar</button>
+    </form>
+
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('cadastro');
+
+            form.addEventListener('submit', async (event) => {
+                event.preventDefault();
+                const nome = document.getElementById('nome').value;
+                const email = document.getElementById('email').value;
+                let cpf = document.getElementById('cpf').value;
+                const telefone = document.getElementById('telefone').value;
+                const nascimento = document.getElementById('nascimento').value;
+                const senha1 = document.getElementById('senha').value;
+                const senha2 = document.getElementById('senha2').value;
+
+                if (senha1 !== senha2) {
+                    alert('Senhas não conferem!');
+                    throw new Error('Senhas não conferem!');
+                }
+
+                // Removendo caracteres de formatação do CPF (pontos e traços)
+                cpf = cpf.replace(/\D/g, ''); // Remove todos os caracteres que não são dígitos
+
+                const apiUrl = 'http://127.0.0.1:5000/api/clientes';
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: "POST",
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            nome: nome,
+                            email: email,
+                            password: senha1,
+                            cpf: cpf,
+                            telefone: telefone,
+                            nascimento: nascimento ? new Date(nascimento).toISOString() : null
+                        })
+                    });
+
+                    const data = await response.json();
+
+                    if (response.ok) {
+                        alert('Usuário criado com sucesso!');
+                    } else {
+                        alert(`Erro: ${data.error}`);
+                    }
+
+                    console.log(data);
+                } catch (error) {
+                    console.error('Erro ao criar usuário:', error);
+                    alert('Erro ao criar usuário.');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
